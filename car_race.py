@@ -2,6 +2,10 @@ import random
 
 
 class Car:
+    """Car with attributes: brand, color - strings;
+    tank volume, fuel consumption,
+    and current fuel indicator (randomly generated from zero to full tank);
+    mileage field (equal to zero, not specified when creating a class instance)"""
 
     def __init__(self, *, brand: str, color: str, gasoline_tank_volume: int, fuel_consumption: float):
 
@@ -17,6 +21,12 @@ class Car:
         return f'{self.color} {self.brand}'
 
     def move(self, *, distance: float) -> bool:
+        """Changes the value of the field - trip distance by the value of the argument - distance;
+        reduces the amount of fuel depending on the distance covered;
+        returns True if movement has occurred,
+        returns False otherwise (with text notification about lack of fuel).
+        When trying to move a greater distance than the remaining fuel allows,
+        moves as far as there is enough fuel before the tank is empty"""
 
         gasoline_need = distance * self.fuel_consumption / 100
 
